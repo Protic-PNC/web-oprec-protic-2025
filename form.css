@@ -232,35 +232,37 @@ img {
   outline-offset: 2px;
   }
   
-  /* Division Selection */
-  .division-instruction {
+/* Division Selection (FINAL REVISED) */
+.division-instruction {
   font-size: var(--font-md);
   font-weight: 600;
   line-height: 27px;
   text-transform: uppercase;
   text-align: center;
   margin-bottom: var(--spacing-2xl);
-  }
-  
-  .division-grid {
-  max-width: 648px;
-  display: flex;
-  flex-direction: column;
-  gap: 68px;
-  }
-  
-  .division-row {
-  display: flex;
-  justify-content: space-between;
-  gap: var(--spacing-md);
-  }
-  
-  .division-btn {
-  width: 80px;
-  height: 80px;
-  background: linear-gradient(180deg, #2AAC63 42.31%, var(--darker-green) 100%);
+}
+
+.division-grid {
+  display: grid; /* Menggunakan Grid Layout */
+  grid-template-columns: repeat(3, 1fr); /* Membuat 3 kolom sama lebar */
+  gap: var(--spacing-lg, 16px); /* Memberi jarak konsisten antar kartu */
+  justify-items: center; /* Memastikan kartu berada di tengah kolomnya */
+}
+
+/* Tombol Divisi */
+.division-btn {
+  width: 90px; 
+  height: 90px;
+  background: linear-gradient(180deg, #2aac63 42.31%, var(--darker-green) 100%);
   border: 1px solid;
-  border-image: linear-gradient(180deg, var(--dark-green) 3.58%, var(--medium-green) 27.28%, var(--accent-green) 45.91%, var(--medium-green) 57.31%, var(--black) 90.67%) 1;
+  border-image: linear-gradient(
+    180deg,
+    var(--dark-green) 3.58%,
+    var(--medium-green) 27.28%,
+    var(--accent-green) 45.91%,
+    var(--medium-green) 57.31%,
+    var(--black) 90.67%
+  ) 1;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-green);
   display: flex;
@@ -271,42 +273,59 @@ img {
   cursor: pointer;
   transition: all 0.3s ease;
   color: var(--text-white);
-  font-family: 'Poppins', sans-serif;
-  transform: scale(1.5);
-  }
-  
-  .division-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-green), 0px 4px 8px rgba(0, 0, 0, 0.2);
-  transform: scale(1.6);
-  }
-  
-  .division-btn:focus {
-  /* outline: 2px solid var(--accent-green); */
-  outline-offset: 2px;
-  }
-  
-  .division-btn.selected {
-  background: linear-gradient(180deg, var(--accent-green) 42.31%, var(--medium-dark-green) 100%);
-  }
-  
-  .division-btn img {
+  font-family: "Poppins", sans-serif;
+}
+
+/* Hover tombol biasa */
+.division-btn:hover {
+  transform: translateY(-4px); 
+  box-shadow: var(--shadow-green-strong, 0px 0px 27.3px rgba(48, 126, 82, 0.43));
+}
+
+/* Fokus */
+.division-btn:focus {
+  outline-offset: 1px;
+}
+
+/* Tombol terpilih */
+.division-btn.selected {
+  background: linear-gradient(
+    180deg,
+    var(--accent-green) 42.31%,
+    var(--medium-dark-green) 100%
+  );
+  border-color: var(--accent-green);
+  transform: translateY(-2px); /* fix, tidak membesar */
+  box-shadow: var(--shadow-green-strong, 0px 0px 27.3px rgba(48, 126, 82, 0.43));
+}
+
+/* Jika tombol terpilih di-hover, tetap sama */
+.division-btn.selected:hover {
+  transform: translateY(-2px); /* tetap stabil */
+  box-shadow: var(--shadow-green-strong, 0px 0px 27.3px rgba(48, 126, 82, 0.43));
+}
+
+/* Icon di tombol */
+.division-btn img {
   width: 30px;
   height: 30px;
-  }
-  
-  .division-btn span {
+}
+
+/* Teks utama */
+.division-btn span {
   font-size: var(--font-lg);
   font-weight: 600;
   line-height: 19.2px;
   text-transform: uppercase;
   text-align: center;
-  }
-  
-  .division-btn .small-text {
+}
+
+/* Teks kecil */
+.division-btn .small-text {
   font-size: var(--font-sm);
   line-height: 12.8px;
-  }
+}
+
   
   /* File Upload */
   .file-upload {
@@ -487,7 +506,7 @@ img {
   /* background: linear-gradient(180deg, #2AAC63 2.31%, var(--darker-green) 80%, var(--darker-green) 60%, var(--darker-green) 50%); */
   background: linear-gradient(180deg, #2AAC63 , #06291E 80%);
   color: #fff;
-  transform: scale(1.6);
+  transform: scale(1);
   box-shadow: 0 0 12px rgba(59, 174, 109, 0.7);
 }
 
